@@ -1,0 +1,46 @@
+#permanentTasks{
+    width: 100%;
+    /* border: 2px solid red; */
+}
+.audioContainer{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.audioMatter{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-top: 1rem;
+}
+.audio-btns{
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 20px;
+
+}
+.SongTitle{
+    color: aliceblue;
+    font-family: 'Balsamiq Sans', cursive;
+    margin-left: 10.5px;
+    display: block;
+}
+.singerName{
+    color: rgb(66, 66, 66);
+    font-family: 'Balsamiq Sans', cursive;
+    margin-left: 10.5px;
+    font-size: 12px;
+}
+.crossBtn-Audio{
+    background-color: red;
+    color: white;
+    border:none;
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    margin-right: 1rem;
+    font-size: 10px;
+    font-family: 'Balsamiq Sans', cursive;
+    cursor: pointer;
+}
