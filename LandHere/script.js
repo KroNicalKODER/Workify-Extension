@@ -1,3 +1,9 @@
+document.addEventListener('blur', function(event) {
+  if (event.relatedTarget === null) {
+    document.focus();
+  }
+});
+
 
 var button = document.getElementById(`add-btn`);
 button.addEventListener(`click`, function() {
