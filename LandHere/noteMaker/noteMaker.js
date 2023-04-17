@@ -68,6 +68,7 @@ document.getElementById('notes-btn').addEventListener('click',()=>{
 
             let showNote = document.createElement('p')
             showNote.className = 'show-note'
+            NoteValue = NoteValue.replaceAll('\n','<br>')
             showNote.innerHTML = NoteValue
             showNoteAndCopy.appendChild(showNote)
             
@@ -85,6 +86,10 @@ document.getElementById('notes-btn').addEventListener('click',()=>{
             delBtnArray[btn].onclick = () => {
                 let NoteWrapperArray = document.getElementsByClassName('note-wrapper')
                 NoteWrapperArray[btn].remove()
+                allNotes = []
+                if(localStorage.getItem('workifyNotes')){
+                    allNotes = JSON.parse(localStorage.workifyNotes)
+                }
                 allNotes = allNotes.filter(function(n){
                     return n.NoteName != allNotes[btn].NoteName
                 })
