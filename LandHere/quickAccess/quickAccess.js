@@ -133,6 +133,7 @@ function clickOnQuickAccess(){
         inputPath.setAttribute('type','text')
         inputPath.setAttribute('placeholder','Enter URL')
         inputPath.style.height='30px'
+        inputPath.style.margin='0.3rem 1rem'
         inputPath.className='input-path'
         
         let subBtn = document.createElement('button');

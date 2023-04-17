@@ -68,6 +68,5 @@ h5{
 
 .popup-window{
     display: hidden;
-    height: 0px;
-    width: 0px;
+    min-height: 0px;
 }
