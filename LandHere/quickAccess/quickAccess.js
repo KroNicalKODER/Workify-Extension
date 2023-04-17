@@ -1,4 +1,5 @@
-document.getElementById('quick-access-btn').addEventListener('click',()=>{
+document.getElementById('quick-access-btn').addEventListener('click',
+function clickOnQuickAccess(){
 
     const outline = document.getElementById('out')
     outline.innerHTML=''
@@ -23,7 +24,7 @@ document.getElementById('quick-access-btn').addEventListener('click',()=>{
     showBtn.style.backgroundColor='purple'
     showBtn.innerHTML='SHOW'
 
-    showBtn.onclick = () => {
+    showBtn.onclick = function showFolders() {
         btns.remove()
         const showWrapper = document.createElement('div')
         showWrapper.className = 'show-wrapper'
@@ -39,11 +40,15 @@ document.getElementById('quick-access-btn').addEventListener('click',()=>{
         }
 
         showWrapper.appendChild(folderWrapper)
-
+        
         for(let folder in folders){
+            let folderParent = document.createElement('div')
+            folderParent.className = 'folder-parent'
+            folderWrapper.appendChild(folderParent)
+
             let folderDel = document.createElement('div')
             folderDel.className = 'folder-del'
-            folderDel.id = 'foldName-'
+            folderDel.id = 'foldName-' + folders[folder]
             let showNewFolder = document.createElement('div')
 
             let delFolderBtn = document.createElement('button')
@@ -57,20 +62,18 @@ document.getElementById('quick-access-btn').addEventListener('click',()=>{
             showNewFolder.id = 'folname69-' + folders[folder]
             showNewFolder.innerHTML = folders[folder]
 
-            folderWrapper.appendChild(folderDel)
+
+            folderParent.appendChild(folderDel)
             folderDel.appendChild(showNewFolder)
             folderDel.appendChild(delFolderBtn)
         }
 
-        let folderDelArr = document.getElementsByClassName('folder-del')
+        let folderDelArr = document.getElementsByClassName('folder-parent')
         for(let btn in folderDelArr){
             folderDelArr[btn].onclick = () =>{
+                showWrapper.remove()
+                showFolders()
                 let urls = allUrls[btn].LocalURLs
-
-                console.log(urls)
-
-                // UrlName : name,
-                // UrlPath : path,
 
                 for(let url in urls){
                     let wholeUrl = document.createElement('div')
@@ -78,23 +81,30 @@ document.getElementById('quick-access-btn').addEventListener('click',()=>{
                     folderAndDelArr[btn].appendChild(wholeUrl)
 
                     let urlName = document.createElement('span')
-                    urlName.innerHTML = urls[url].UrlName
-                    wholeUrl.appendChild(urlName)
+                    urlName.innerHTML = 'Name: ' + urls[url].UrlName
                     urlName.className='url-name'
+                    wholeUrl.appendChild(urlName)
 
                     let urlPath = document.createElement('span')
-                    urlPath.innerHTML = urls[url].UrlPath
+                    urlPath.innerHTML = 'URL: ' + urls[url].UrlPath
                     urlPath.className = 'url-path'
                     wholeUrl.appendChild(urlPath)
 
                 }
 
+                let wholeUrlArr = document.getElementsByClassName('whole-url');
+                for(let btn in wholeUrlArr){
+                    wholeUrlArr[btn].onclick = () => {
+                        chrome.runtime.sendMessage({action: 'openURL',accessPath: urls[btn].UrlPath});
+                    }
+                }
             }
         }
+        
 
         let delBtnArr = document.getElementsByClassName('del-folder-btn')
         // console.log(delBtnArr)
-        let folderAndDelArr = document.getElementsByClassName('folder-del')
+        let folderAndDelArr = document.getElementsByClassName('folder-parent')
         // console.log(folderAndDelArr)
         for(let btn in delBtnArr){
             delBtnArr[btn].onclick = ()=>{
