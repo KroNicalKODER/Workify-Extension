@@ -70,3 +70,11 @@ h5{
     display: hidden;
     min-height: 0px;
 }
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+::-webkit-scrollbar-thumb{
+    background: lightgreen;
+    border-radius: 5px;
+}
