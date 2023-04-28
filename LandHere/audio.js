@@ -1,6 +1,6 @@
 let isPlaying = true
 let audioOn = false
-let isSignedIn = false
+let isSignedIn = false          //Auth key to local Storage and read If present make it true else false
 
 document.getElementById("spotify-btn").addEventListener('click', () => {
 
