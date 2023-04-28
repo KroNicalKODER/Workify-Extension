@@ -1,7 +1,7 @@
 {
     "name": "Workify",
     "version":"0.1.0",
-    "permissions" : ["tabs","storage"],
+    "permissions" : ["tabs","storage","unlimitedStorage"],
 
     "background" :{
         "service_worker": "background.js"

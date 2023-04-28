@@ -30,6 +30,13 @@ chrome.runtime.onMessage.addListener(
                 }
             })
         }
+
+        if(request.action == 'openURL'){
+            console.log('from background open tab')
+            let path = request.accessPath
+            var newURL = path
+            chrome.tabs.create({ url: newURL });
+        }
         // console.log(ArrTabs)
     }
 )
