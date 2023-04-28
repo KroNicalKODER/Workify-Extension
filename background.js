@@ -37,6 +37,12 @@ chrome.runtime.onMessage.addListener(
             var newURL = path
             chrome.tabs.create({ url: newURL });
         }
+
+        if(request.action == 'openAuthPage') {
+            let path = 'FirstPage.html'
+            chrome.tabs.create({url: path})
+            console.log("browser opening")
+        }
         // console.log(ArrTabs)
     }
 )

@@ -1,7 +1,12 @@
 let isPlaying = true
 let audioOn = false
+let isSignedIn = false
 
 document.getElementById("spotify-btn").addEventListener('click', () => {
+
+    if(!isSignedIn){
+        chrome.runtime.sendMessage({action: 'openAuthPage'})
+    }
 
     console.log("clicked spotify")
     const tasks = document.getElementById("permanentTasks")
