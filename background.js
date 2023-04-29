@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(
         }
 
         if(request.action == 'openAuthPage') {
-            let path = 'FirstPage.html'
+            let path = 'https://kronicalkoder.github.io/workify-page/'
             chrome.tabs.create({url: path})
             console.log("browser opening")
         }
